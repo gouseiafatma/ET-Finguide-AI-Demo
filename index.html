@@ -1,227 +1,93 @@
-# 💰 ET FinGuide AI
-
-🚀 AI Financial Decision Engine (ET Hackathon)
-
----
-
-## 🧩 Problem
-
-Most people struggle with managing money.  
-They don’t know:
-
-- How much to save  
-- Where to invest  
-- How to plan monthly finances  
-
----
-
-## 💡 Solution
-
-ET FinGuide AI helps users:
-
-- Understand financial health  
-- Get smart financial decisions  
-- Follow a monthly action plan  
-- Adjust plans based on life events  
-
----
-
-## 🧠 Features
-
-### 1. Financial Health Score
-- Score out of 100
-- Detects overspending & low savings
-
-### 2. Smart Decisions
-- SIP recommendations  
-- Expense reduction tips  
-- Insurance suggestions  
-
-### 3. Monthly Plan
-- Week-wise financial actions  
-
-### 4. Life Event Simulator 🚀
-- Bonus / Salary increase / Expense  
-- AI updates plan dynamically  
-
----
-
-## 📱 Demo Flow
-
-1. Enter financial details  
-2. View financial score  
-3. Get smart recommendations  
-4. Follow monthly plan  
-5. Simulate life event → updated plan  
-
----
-
-## ⚙️ Tech Stack
-
-- Frontend: HTML, CSS  
-- Backend: Flask (Prototype level)  
-- Logic: Rule-based AI  
-
----
-
-## ▶️ Live Demo
-
-👉 https://gouseiafatma.github.io/ET-Finguide-AI-Demo/
-
----
-
-## 📊 Impact
-
-- Helps users save ₹30,000–₹1,00,000/year  
-- Makes financial planning simple  
-
----
-
-## 🧩 Architecture
-
-User → Input → Decision Engine → Dashboard → Simulation → Updated Plan  
-
----
-
-## 🌍 Vision
-
-To integrate with platforms like Economic Times and provide real-time financial guidance to millions.
-
----<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<title>ET FinGuide AI</title>
-<style>
-body { font-family: Arial; text-align:center; background:#f5f7fa; }
-.card { background:white; padding:20px; margin:50px auto; width:300px; border-radius:10px; box-shadow:0 0 10px #ccc; }
-button { padding:10px 20px; background:#007bff; color:white; border:none; border-radius:5px; }
-</style>
+    <title>ET FinGuide AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+            width: 320px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: gray;
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="card">
-<h2>💰 ET FinGuide AI</h2>
-<p>Your AI Financial Decision Engine</p>
+    <h1>💰 ET FinGuide AI</h1>
+    <p>Your AI Financial Decision Engine</p>
 
-<form action="result.html">
-<input type="number" placeholder="Monthly Income"><br><br>
-<input type="number" placeholder="Monthly Expenses"><br><br>
-<input type="number" placeholder="Current Savings"><br><br>
+    <form action="result.html">
+        <input type="number" placeholder="Monthly Income" required>
+        <input type="number" placeholder="Monthly Expenses" required>
+        <input type="number" placeholder="Current Savings" required>
 
-<select>
-<option>Save Money</option>
-<option>Buy Something</option>
-<option>Invest</option>
-<option>Financial Stability</option>
-</select><br><br>
+        <select>
+            <option>Save Money</option>
+            <option>Invest</option>
+            <option>Buy Something</option>
+            <option>Financial Stability</option>
+        </select>
 
-<select>
-<option>Low Risk</option>
-<option>Medium Risk</option>
-<option>High Risk</option>
-</select><br><br>
+        <select>
+            <option>Low Risk</option>
+            <option>Medium Risk</option>
+            <option>High Risk</option>
+        </select>
 
-<select>
-<option>Low Lifestyle</option>
-<option>Medium Lifestyle</option>
-<option>High Lifestyle</option>
-</select><br><br>
+        <select>
+            <option>Low Lifestyle</option>
+            <option>Medium Lifestyle</option>
+            <option>High Lifestyle</option>
+        </select>
 
-<button type="submit">Analyze My Finances</button>
-</form>
-
+        <button>Analyze My Finances</button>
+    </form>
 </div>
 
 </body>
 </html>
-# 💰 ET FinGuide AI
-
-🚀 AI Financial Decision Engine (ET Hackathon)
-
----
-
-## 🧩 Problem
-
-Most people struggle with managing money.  
-They don’t know:
-
-- How much to save  
-- Where to invest  
-- How to plan monthly finances  
-
----
-
-## 💡 Solution
-
-ET FinGuide AI helps users:
-
-- Understand financial health  
-- Get smart financial decisions  
-- Follow a monthly action plan  
-- Adjust plans based on life events  
-
----
-
-## 🧠 Features
-
-### 1. Financial Health Score
-- Score out of 100
-- Detects overspending & low savings
-
-### 2. Smart Decisions
-- SIP recommendations  
-- Expense reduction tips  
-- Insurance suggestions  
-
-### 3. Monthly Plan
-- Week-wise financial actions  
-
-### 4. Life Event Simulator 🚀
-- Bonus / Salary increase / Expense  
-- AI updates plan dynamically  
-
----
-
-## 📱 Demo Flow
-
-1. Enter financial details  
-2. View financial score  
-3. Get smart recommendations  
-4. Follow monthly plan  
-5. Simulate life event → updated plan  
-
----
-
-## ⚙️ Tech Stack
-
-- Frontend: HTML, CSS  
-- Backend: Flask (Prototype level)  
-- Logic: Rule-based AI  
-
----
-
-## ▶️ Live Demo
-
-👉 https://gouseiafatma.github.io/ET-Finguide-AI-Demo/
-
----
-
-## 📊 Impact
-
-- Helps users save ₹30,000–₹1,00,000/year  
-- Makes financial planning simple  
-
----
-
-## 🧩 Architecture
-
-User → Input → Decision Engine → Dashboard → Simulation → Updated Plan  
-
----
-
-## 🌍 Vision
-
-To integrate with platforms like Economic Times and provide real-time financial guidance to millions.
-
----
