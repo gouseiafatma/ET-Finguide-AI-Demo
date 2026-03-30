@@ -1,93 +1,169 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ET FinGuide AI</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+<title>ET FinGuide AI</title>
 
-        .card {
-            background: black;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
-            width: 320px;
-            text-align: center;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0f172a;
+    color: white;
+}
 
-        h1 {
-            margin-bottom: 5px;
-        }
+.header {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    background: #1e293b;
+    border-bottom: 1px solid #334155;
+}
 
-        p {
-            color: gray;
-            margin-bottom: 20px;
-        }
+.chat-container {
+    height: 80vh;
+    overflow-y: auto;
+    padding: 15px;
+}
 
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
+.message {
+    max-width: 75%;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 12px;
+    line-height: 1.5;
+}
 
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
+.ai {
+    background: #1e293b;
+}
 
-        button:hover {
-            background: #0056b3;
-        }
-    </style>
+.user {
+    background: #22c55e;
+    color: black;
+    margin-left: auto;
+}
+
+.input-area {
+    display: flex;
+    padding: 10px;
+    background: #1e293b;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+}
+
+button {
+    margin-left: 10px;
+    padding: 12px 16px;
+    background: #22c55e;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+</style>
 </head>
 
 <body>
 
-<div class="card">
-    <h1>💰 ET FinGuide AI</h1>
-    <p>Your AI Financial Decision Engine</p>
+<div class="header">🤖 ET FinGuide AI</div>
 
-    <form action="result.html">
-        <input type="number" placeholder="Monthly Income" required>
-        <input type="number" placeholder="Monthly Expenses" required>
-        <input type="number" placeholder="Current Savings" required>
-
-        <select>
-            <option>Save Money</option>
-            <option>Invest</option>
-            <option>Buy Something</option>
-            <option>Financial Stability</option>
-        </select>
-
-        <select>
-            <option>Low Risk</option>
-            <option>Medium Risk</option>
-            <option>High Risk</option>
-        </select>
-
-        <select>
-            <option>Low Lifestyle</option>
-            <option>Medium Lifestyle</option>
-            <option>High Lifestyle</option>
-        </select>
-
-        <button>Analyze My Finances</button>
-    </form>
+<div class="chat-container" id="chat">
+<div class="message ai">
+👋 Hi! I'm your AI Financial Assistant.  
+Tell me your monthly income.
 </div>
+</div>
+
+<div class="input-area">
+<input type="text" id="input" placeholder="Type here...">
+<button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+let step = 0;
+let data = {};
+
+function typeEffect(element, text, speed = 20) {
+    let i = 0;
+    element.innerHTML = "";
+    function typing() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }
+    }
+    typing();
+}
+
+function showTyping(chat) {
+    let div = document.createElement("div");
+    div.className = "message ai";
+    div.innerHTML = "● ● ●";
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+    return div;
+}
+
+function sendMessage() {
+    let input = document.getElementById("input");
+    let value = input.value;
+    if (!value) return;
+
+    let chat = document.getElementById("chat");
+
+    chat.innerHTML += `<div class="message user">${value}</div>`;
+    input.value = "";
+
+    let typingDiv = showTyping(chat);
+
+    setTimeout(() => {
+        let reply = "";
+
+        if (step == 0) {
+            data.income = parseInt(value);
+            reply = "Got it 👍 Now tell me your monthly expenses.";
+        } 
+        else if (step == 1) {
+            data.expense = parseInt(value);
+            reply = "Nice. How much savings do you currently have?";
+        }
+        else if (step == 2) {
+            data.savings = parseInt(value);
+            reply = "What's your goal? (save / invest / stability)";
+        }
+        else if (step == 3) {
+            data.goal = value;
+            reply = "What's your risk level? (low / medium / high)";
+        }
+        else if (step == 4) {
+            data.risk = value;
+            reply = "Lifestyle spending? (low / medium / high)";
+        }
+        else if (step == 5) {
+            data.lifestyle = value;
+
+            localStorage.setItem("financeData", JSON.stringify(data));
+
+            reply = "Analyzing your financial profile... 🤖";
+
+            setTimeout(() => {
+                window.location.href = "result.html";
+            }, 2000);
+        }
+
+        typingDiv.innerHTML = "";
+        typeEffect(typingDiv, reply);
+
+        step++;
+    }, 700);
+}
+</script>
 
 </body>
 </html>
