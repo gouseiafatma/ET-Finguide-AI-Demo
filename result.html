@@ -1,77 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard</title>
+<title>AI Dashboard</title>
+
 <style>
-body { font-family: Arial; background:#f5f7fa; text-align:center; }
-.card { background:white; padding:20px; margin:20px auto; width:320px; border-radius:10px; box-shadow:0 0 10px #ccc; }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+.container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+}
+
+.big {
+    font-size: 40px;
+    font-weight: bold;
+    color: #22c55e;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
 </style>
 </head>
 
 <body>
 
-<h2>📊 Financial Dashboard</h2>
+<div class="container">
 
-<div class="card">
-<h1>62 / 100</h1>
-<p>⚠️ High lifestyle spending</p>
-<p>❌ No emergency fund</p>
-<p>⚠️ Low investment</p>
-</div>
+<h1>📊 AI Financial Dashboard</h1>
 
-<div class="card">
-<h3>💡 Smart Decisions</h3>
-<p>💰 Invest ₹3,000/month in SIP</p>
-<p>🛡 Get health insurance</p>
-<p>💸 Reduce lifestyle spend</p>
-</div>
-
-<div class="card">
-<h3>📅 Monthly Plan</h3>
-<p>Week 1 → Track expenses</p>
-<p>Week 2 → Reduce spending</p>
-<p>Week 3 → Start SIP</p>
-<p>Week 4 → Build emergency fund</p>
-</div>
-
-<div class="card">
-<h3>📈 Impact</h3>
-<p>Save ₹48,000/year</p>
-</div>
-<h2>📊 Financial Health Score</h2>
-<h1>62 / 100</h1>
-
-<p>⚠️ High lifestyle spending</p>
-<p>❌ No emergency fund</p>
-<p>⚠️ Low investment</p>
-
-<hr>
-
-<h2>💡 Smart Decisions</h2>
-<p>💰 Invest ₹3,000/month in SIP</p>
-<p>🛡 Get health insurance</p>
-<p>💸 Reduce spending by ₹2,000</p>
-
-<hr>
-
-<h2>📅 Monthly Plan</h2>
-<p>Week 1 → Track expenses</p>
-<p>Week 2 → Reduce spending</p>
-<p>Week 3 → Start SIP</p>
-<p>Week 4 → Build emergency fund</p>
-
-<hr>
-
-<h2>📈 Impact</h2>
-<p>You can save ₹48,000/year</p>
-
-<br>
+<div class="card" id="score"></div>
+<div class="card" id="decisions"></div>
+<div class="card" id="plan"></div>
+<div class="card" id="impact"></div>
 
 <a href="simulate.html">
-  <button>Simulate Life Event</button>
+<button style="width:100%; padding:14px; background:#3b82f6; border:none; border-radius:10px;">
+⚡ Simulate Life Event
+</button>
 </a>
-<br>
-<a href="simulate.html">🚀 Simulate Life Event</a>
+
+</div>
+
+<script>
+let data = JSON.parse(localStorage.getItem("financeData"));
+
+let income = data.income;
+let expense = data.expense;
+let savings = income - expense;
+let rate = (savings / income) * 100;
+
+let score = Math.max(20, Math.min(100, Math.round(rate)));
+
+let issues = "";
+if (rate < 10) issues += "❌ Very low savings<br>";
+if (data.lifestyle === "high") issues += "⚠️ High lifestyle spending<br>";
+if (data.savings < expense * 3) issues += "❌ No emergency fund<br>";
+
+let sip = Math.round(savings * 0.3);
+let yearly = sip * 12;
+
+document.getElementById("score").innerHTML =
+`<div class="big">${score} / 100</div>${issues}`;
+
+document.getElementById("decisions").innerHTML =
+`<h2>💡 AI Decisions</h2>
+<p>Invest ₹${sip}/month in SIP</p>
+<p>Reduce expenses by ₹${Math.round(expense * 0.1)}</p>
+<p>Get health insurance</p>`;
+
+document.getElementById("plan").innerHTML =
+`<h2>📅 Monthly Plan</h2>
+<p>Week 1 → Track expenses</p>
+<p>Week 2 → Cut unnecessary spending</p>
+<p>Week 3 → Start SIP</p>
+<p>Week 4 → Emergency fund</p>`;
+
+document.getElementById("impact").innerHTML =
+`<h2>📈 AI Impact</h2>
+<p><strong>You can save ₹${yearly}/year</strong></p>`;
+</script>
 
 </body>
 </html>
