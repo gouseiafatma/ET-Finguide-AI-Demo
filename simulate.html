@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Simulation</title>
+<title>AI Simulation</title>
+
 <style>
-body { font-family: Arial; text-align:center; background:#f5f7fa; }
-.card { background:white; padding:20px; margin:50px auto; width:320px; border-radius:10px; box-shadow:0 0 10px #ccc; }
-button { padding:10px; margin:5px; }
+body {
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 400px;
+    margin: auto;
+}
 </style>
 </head>
 
 <body>
 
 <div class="card">
-<h2>⚡ Life Event Simulator</h2>
+<h2>🤖 AI Life Event Simulator</h2>
 
-<button onclick="show()">Got Bonus ₹50K</button>
-<button onclick="show()">Salary Increased</button>
-<button onclick="show()">Big Expense</button>
+<select id="event">
+    <option>Bonus ₹50K</option>
+    <option>Salary Increase</option>
+    <option>Big Expense</option>
+</select>
+
+<br><br>
+
+<button onclick="simulate()">Run Simulation</button>
 
 <p id="output"></p>
 </div>
 
 <script>
-function show() {
-document.getElementById("output").innerHTML =
-"Updated Plan: Increase SIP to ₹5,000 | Save bonus | Reach goal faster 🚀";
+function simulate(){
+    document.getElementById("output").innerHTML =
+    "⚡ AI Update: Increase SIP to ₹5,000 and reach goal faster.";
 }
 </script>
 
 </body>
 </html>
-<h2>⚡ Life Event Simulation</h2>
-
-<p>Event: Bonus ₹50,000</p>
-
-<h3>Updated Plan</h3>
-
-<p>💰 Increase SIP to ₹5,000</p>
-<p>💸 Save bonus instead of spending</p>
-<p>📈 Reach goal 6 months earlier</p>
-
-<br>
-
-<a href="index.html">
-  <button>Back to Home</button>
-</a>
